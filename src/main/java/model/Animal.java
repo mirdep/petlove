@@ -6,10 +6,11 @@ public class Animal implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String nome;
-	private int idade;
+	private String idade;
 	private String porte;
 	private String especie;
 	private String local;
+	private String contato;
 
 
 
@@ -17,18 +18,22 @@ public class Animal implements Serializable {
 	public Animal() {
 		id = -1;
 		nome = "";
-		idade = 0;
+		idade = "0";
 		porte = "";
 		porte = "especie";
+		local = "";
+		contato = "";
 
 	}
 
-	public Animal(int id, String nome, int idade, String porte, String especie) {
+	public Animal(int id, String nome, String idade, String porte, String especie, String local, String contato) {
 		setId(id);
 		setNome(nome);
 		setIdade(idade);
 		setPorte(porte);
 		setEspecie(especie);
+		setLocal(local);
+		setContato(contato);
 
 	}
 	
@@ -48,11 +53,11 @@ public class Animal implements Serializable {
 		this.nome = nome;
 	}
 	
-	public int getIdade() {
+	public String getIdade() {
 		return idade;
 	}
 	
-	public void setIdade(int idade) {
+	public void setIdade(String idade) {
 		this.idade = idade;
 	}
 	
@@ -78,6 +83,14 @@ public class Animal implements Serializable {
 
 	public void setLocal(String local){
 		this.local = local;
+	}
+
+	public String getContato(){
+		return contato;
+	}
+
+	public void setContato(String contato){
+		this.contato = contato;
 	}
 
 
