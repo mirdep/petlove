@@ -39,7 +39,7 @@ public class AnimalDAO {
 			this.maxId = (animal.getId() > this.maxId) ? animal.getId() : this.maxId;
 			this.saveToFile();
 		} catch (Exception e) {
-			System.out.println("ERRO ao gravar o animal '" + animal.getDescricao() + "' no disco!");
+			System.out.println("ERRO ao gravar o animal '" + animal.getNome() + "' no disco!");
 		}
 	}
 
