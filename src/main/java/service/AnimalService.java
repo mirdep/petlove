@@ -1,8 +1,6 @@
 package service;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import dao.AnimalDAO;
 import model.Animal;
@@ -23,15 +21,16 @@ public class AnimalService {
 	}
 
 	public Object add(Request request, Response response) {
-		String descricao = request.queryParams("descricao");
-		float preco = Float.parseFloat(request.queryParams("preco"));
-		int quantidade = Integer.parseInt(request.queryParams("quantidade"));
-		LocalDateTime dataFabricacao = LocalDateTime.parse(request.queryParams("dataFabricacao"));
-		LocalDate dataValidade = LocalDate.parse(request.queryParams("dataValidade"));
+		String nome = request.queryParams("nome");
+		String idade = request.queryParams("idade");
+		String porte = request.queryParams("porte");
+		String especie = request.queryParams("especie");
+		String local = request.queryParams("local");
+		String contato = request.queryParams("contato");
 
 		int id = animalDAO.getMaxId() + 1;
 
-		Animal animal = new Animal(id, descricao, preco, quantidade, dataFabricacao, dataValidade);
+		Animal animal = new Animal(id, nome, idade, porte, especie, local, contato);
 
 		animalDAO.add(animal);
 
@@ -50,11 +49,12 @@ public class AnimalService {
 
             return "<animal>\n" + 
             		"\t<id>" + animal.getId() + "</id>\n" +
-            		"\t<descricao>" + animal.getDescricao() + "</descricao>\n" +
-            		"\t<preco>" + animal.getPreco() + "</preco>\n" +
-            		"\t<quantidade>" + animal.getQuant() + "</quantidade>\n" +
-            		"\t<fabricacao>" + animal.getDataFabricacao() + "</fabricacao>\n" +
-            		"\t<validade>" + animal.getDataValidade() + "</validade>\n" +
+            		"\t<nome>" + animal.getNome() + "</nome>\n" +
+					"\t<idade>" + animal.getIdade() + "</idade>\n" +
+					"\t<porte>" + animal.getPorte() + "</porte>\n" +
+					"\t<especie>" + animal.getEspecie() + "</especie>\n" +
+					"\t<local>" + animal.getLocal() + "</local>\n" +
+					"\t<contato>" + animal.getContato() + "</contato>\n" +
             		"</animal>\n";
         } else {
             response.status(404); // 404 Not found
@@ -69,11 +69,12 @@ public class AnimalService {
 		Animal animal = (Animal) animalDAO.get(id);
 
         if (animal != null) {
-        	animal.setDescricao(request.queryParams("descricao"));
-        	animal.setPreco(Float.parseFloat(request.queryParams("preco")));
-        	animal.setQuant(Integer.parseInt(request.queryParams("quantidade")));
-        	animal.setDataFabricacao(LocalDateTime.parse(request.queryParams("dataFabricacao")));
-        	animal.setDataValidade(LocalDate.parse(request.queryParams("dataValidade")));
+			animal.setNome(request.queryParams("nome"));
+			animal.setIdade(request.queryParams("idade"));
+			animal.setPorte(request.queryParams("porte"));
+			animal.setEspecie(request.queryParams("especie"));
+			animal.setLocal(request.queryParams("local"));
+			animal.setContato(request.queryParams("contato"));
 
         	animalDAO.update(animal);
         	
@@ -106,12 +107,12 @@ public class AnimalService {
 		StringBuffer returnValue = new StringBuffer("<animals type=\"array\">");
 		for (Animal animal : animalDAO.getAll()) {
 			returnValue.append("\n<animal>\n" + 
-            		"\t<id>" + animal.getId() + "</id>\n" +
-            		"\t<descricao>" + animal.getDescricao() + "</descricao>\n" +
-            		"\t<preco>" + animal.getPreco() + "</preco>\n" +
-            		"\t<quantidade>" + animal.getQuant() + "</quantidade>\n" +
-            		"\t<fabricacao>" + animal.getDataFabricacao() + "</fabricacao>\n" +
-            		"\t<validade>" + animal.getDataValidade() + "</validade>\n" +
+					"\t<nome>" + animal.getNome() + "</nome>\n" +
+					"\t<idade>" + animal.getIdade() + "</idade>\n" +
+					"\t<porte>" + animal.getPorte() + "</porte>\n" +
+					"\t<especie>" + animal.getEspecie() + "</especie>\n" +
+					"\t<local>" + animal.getLocal() + "</local>\n" +
+					"\t<contato>" + animal.getContato() + "</contato>"+
             		"</animal>\n");
 		}
 		returnValue.append("</animals>");
