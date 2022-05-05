@@ -20,6 +20,5 @@ public class Aplicacao {
         get("/animal/delete/:id", (request, response) -> animalService.remove(request, response));
 
         get("/animal", (request, response) -> animalService.getAll(request, response));
-               
     }
 }

@@ -3,7 +3,7 @@
   <groupId>com.ti2cc</groupId>
   <artifactId>03ProdutoService</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-    <dependencies>
+  <dependencies>
     <dependency>
       <groupId>com.sparkjava</groupId>
       <artifactId>spark-core</artifactId>
@@ -13,7 +13,7 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
       <version>1.7.21</version>
-   </dependency>
+    </dependency>
   </dependencies>
   <properties>
     <maven.compiler.target> 1.8</maven.compiler.target>
