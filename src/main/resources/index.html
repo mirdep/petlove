@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function show(shown, hidden) {
+        document.getElementById(shown).style.display='block';
+        document.getElementById(hidden).style.display='none';
+        return false;
+      }
+    </script>
+
+    <style>
+      input[type=text] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          box-sizing: border-box;
+      }
+
+      input[type=number] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          box-sizing: border-box;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: #4CAF50;
+      }
+
+      .next {
+        background-color: #4CAF50;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="#cadastrar" onclick="return show('pagecadastrar','pageadotar');">Cadastrar</a></li>
+      <li><a href="#adotar" onclick="return show('pageadotar','pagecadastrar');">Adotar</a></li>
+    </ul>
+
+    <div id="pagecadastrar">
+      <h2>Cadastrar animal</h2>
+      <form action="http://localhost:6789/produto" method="post" id="form-add">
+        <table>
+          <tr>
+            <td align="right">Nome:</td>
+            <td align="left"><input type="text" name="nome" /></td>
+          </tr>
+  
+          <tr>
+            <td align="right">Idade:</td>
+            <td align="left"><input type="number" name="idade" /></td>
+          </tr>
+  
+          <tr>
+            <td align="right">Porte:</td>
+            <td align="left"><input type="text" name="porte" /></td>
+          </tr>
+  
+          <tr>
+            <td align="right">Espécie:</td>
+            <td align="left"><input type="text" name="especie" /></td>
+          </tr>
+  
+          <tr>
+            <td align="right">Local:</td>
+            <td align="left"><input type="text" name="local" /></td>
+          </tr>
+  
+          <tr>
+            <td align="right">Contato:</td>
+            <td align="left"><input type="text" name="contato" placeholder="(55) 55555-5555"/></td>
+          </tr>
+  
+          <tr>
+              <br>
+              <label for="foto">Escolha uma foto do animal!</label>
+              <br><br>
+              <input type="file" id="foto" name="foto" accept="image/*">
+          </tr>
+  
+          <tr>
+            <td align="right" colspan="2">
+              <input type="submit" value="Enviar" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <div id="pageadotar">
+
+    </div>
+  </body>
+</html>
