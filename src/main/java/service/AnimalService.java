@@ -35,7 +35,7 @@ public class AnimalService {
 		animalDAO.add(animal);
 
 		response.status(201); // 201 Created
-		return id;
+		return new String("Animal adicionado com sucesso - id = "+ id);
 	}
 
 	public Object get(Request request, Response response) {
