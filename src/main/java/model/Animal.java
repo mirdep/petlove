@@ -11,6 +11,7 @@ public class Animal implements Serializable {
 	private String especie;
 	private String local;
 	private String contato;
+	private String foto;
 
 
 
@@ -23,10 +24,11 @@ public class Animal implements Serializable {
 		porte = "especie";
 		local = "";
 		contato = "";
+		foto = "";
 
 	}
 
-	public Animal(int id, String nome, String idade, String porte, String especie, String local, String contato) {
+	public Animal(int id, String nome, String idade, String porte, String especie, String local, String contato, String foto) {
 		setId(id);
 		setNome(nome);
 		setIdade(idade);
@@ -34,6 +36,7 @@ public class Animal implements Serializable {
 		setEspecie(especie);
 		setLocal(local);
 		setContato(contato);
+		setFoto(foto);
 
 	}
 	
@@ -91,6 +94,14 @@ public class Animal implements Serializable {
 
 	public void setContato(String contato){
 		this.contato = contato;
+	}
+
+	public String getFoto(){
+		return foto;
+	}
+
+	public void setFoto(String foto){
+		this.foto = foto;
 	}
 
 

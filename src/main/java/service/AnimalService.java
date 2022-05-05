@@ -27,10 +27,11 @@ public class AnimalService {
 		String especie = request.queryParams("especie");
 		String local = request.queryParams("local");
 		String contato = request.queryParams("contato");
+		String foto = request.queryParams("foto");
 
 		int id = animalDAO.getMaxId() + 1;
 
-		Animal animal = new Animal(id, nome, idade, porte, especie, local, contato);
+		Animal animal = new Animal(id, nome, idade, porte, especie, local, contato, foto);
 
 		animalDAO.add(animal);
 
@@ -44,7 +45,7 @@ public class AnimalService {
 		Animal animal = (Animal) animalDAO.get(id);
 		
 		if (animal != null) {
-    	    response.header("Content-Type", "application/xml");
+    		response.header("Content-Type", "application/xml");
     	    response.header("Content-Encoding", "UTF-8");
 
             return "<animal>\n" + 
@@ -55,6 +56,7 @@ public class AnimalService {
 					"\t<especie>" + animal.getEspecie() + "</especie>\n" +
 					"\t<local>" + animal.getLocal() + "</local>\n" +
 					"\t<contato>" + animal.getContato() + "</contato>\n" +
+					"\t<foto>" + animal.getFoto() + "</foto>\n" +
             		"</animal>\n";
         } else {
             response.status(404); // 404 Not found
@@ -75,6 +77,7 @@ public class AnimalService {
 			animal.setEspecie(request.queryParams("especie"));
 			animal.setLocal(request.queryParams("local"));
 			animal.setContato(request.queryParams("contato"));
+			animal.setFoto(request.queryParams("foto"));
 
         	animalDAO.update(animal);
         	
@@ -113,6 +116,7 @@ public class AnimalService {
 					"\t<especie>" + animal.getEspecie() + "</especie>\n" +
 					"\t<local>" + animal.getLocal() + "</local>\n" +
 					"\t<contato>" + animal.getContato() + "</contato>"+
+					"\t<foto>" + animal.getFoto() + "</foto>"+
             		"</animal>\n");
 		}
 		returnValue.append("</animals>");

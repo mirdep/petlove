@@ -10,11 +10,33 @@
     </script>
 
     <script>
-      function show(shown, hidden) {
-        document.getElementById(shown).style.display='block';
-        document.getElementById(hidden).style.display='none';
-        return false;
+      function codeAddress() {
+        show('pagecadastrar','pageadotar');
       }
+      window.onload = codeAddress;
+    </script>
+
+    <script>
+      const uploadImage = async (event) => {
+        const convertBase64 = (file) => {
+            return new Promise((resolve, reject) => {
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(file);
+
+                fileReader.onload = () => {
+                    resolve(fileReader.result);
+                };
+
+                fileReader.onerror = (error) => {
+                    reject(error);
+                };
+            });
+        };
+        const textArea = document.getElementById("foto");
+        const file = event.target.files[0];
+        const base64 = await convertBase64(file);
+        textArea.value = base64;
+      };
     </script>
 
     <style>
@@ -73,21 +95,32 @@
       <li><a href="#cadastrar" onclick="return show('pagecadastrar','pageadotar');">Cadastrar</a></li>
       <li><a href="#adotar" onclick="return show('pageadotar','pagecadastrar');">Adotar</a></li>
     </ul>
-
+    
     <div id="pagecadastrar">
       <h2>Cadastrar animal</h2>
       <form action="http://localhost:6789/animal" method="post" id="form-add" target="_blank">
         <table>
           <tr>
+            <br>
+            <label for="fotoupload">Escolha uma foto do animal!</label>
+            <br><br>
+            <input type="file" id="fotoupload" name="fotoupload" accept="image/*" onchange="uploadImage(event)">
+          </tr>
+          
+          <tr>
+            <td><input type="hidden" id="foto" name="foto"/></td>
+          </tr>
+          
+          <tr>
             <td align="right">Nome:</td>
             <td align="left"><input type="text" name="nome" /></td>
           </tr>
-  
+          
           <tr>
             <td align="right">Idade:</td>
             <td align="left"><input type="number" name="idade" /></td>
           </tr>
-  
+          
           <tr>
             <td align="right">Porte:</td>
             <td align="left"><input type="text" name="porte" /></td>
@@ -97,24 +130,18 @@
             <td align="right">Espécie:</td>
             <td align="left"><input type="text" name="especie" /></td>
           </tr>
-  
+          
           <tr>
             <td align="right">Local:</td>
             <td align="left"><input type="text" name="local" /></td>
           </tr>
-  
+          
           <tr>
             <td align="right">Contato:</td>
             <td align="left"><input type="text" name="contato" placeholder="(55) 55555-5555"/></td>
           </tr>
-  
-          <tr>
-              <br>
-              <label for="foto">Escolha uma foto do animal!</label>
-              <br><br>
-              <input type="file" id="foto" name="foto" accept="image/*">
-          </tr>
-  
+          
+          
           <tr>
             <td align="right" colspan="2">
               <input type="submit" value="Enviar" />
@@ -123,12 +150,12 @@
         </table>
       </form>
     </div>
-
-    <div id="pageadotar">
+    
+    <div id="pageadotar" style.display='none'>
       <form onsubmit="addIdToPath('form-get', 'http://localhost:6789/animal/')" method="get" id="form-get">
 				<input class="input--down" type="text" id="id" value="" placeholder="id do produto..."> 
 				<input type="submit" value="consultar" class="input--button input--consult__style">
 			</form>
     </div>
   </body>
-</html>
+  </html>
