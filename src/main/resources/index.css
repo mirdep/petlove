@@ -1,0 +1,11 @@
+.cartaoAnimal{
+    background-color: #e00914;
+    color: white;
+    width: 200px;
+}
+
+#lista{
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+}

@@ -117,6 +117,8 @@ public class AnimalService {
 					"\t<local>" + animal.getLocal() + "</local>\n" +
 					"\t<contato>" + animal.getContato() + "</contato>"+
 					"\t<foto>" + animal.getFoto() + "</foto>"+
+					"\t<id>" + animal.getId() + "</id>\n" +
+					
             		"</animal>\n");
 		}
 		returnValue.append("</animals>");

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+
     <script>
       function show(shown, hidden) {
         document.getElementById(shown).style.display='block';
@@ -37,6 +40,17 @@
         const base64 = await convertBase64(file);
         textArea.value = base64;
       };
+    </script>
+
+    <script> 
+      window.onload = async()=> {
+        console.log(); 
+        let animals = await getAnimals();
+        animals = xml2json(animals);
+        console.log(animals.animals.animal);    
+        createAnimalsList(animals.animals.animal);
+
+      }
     </script>
 
     <style>
@@ -152,10 +166,12 @@
     </div>
     
     <div id="pageadotar" style.display='none'>
-      <form onsubmit="addIdToPath('form-get', 'http://localhost:6789/animal/')" method="get" id="form-get">
-				<input class="input--down" type="text" id="id" value="" placeholder="id do produto..."> 
-				<input type="submit" value="consultar" class="input--button input--consult__style">
-			</form>
+      <div id="lista">
+          <div class="cartaoanimal">
+            
+          </div>
+      </div>
     </div>
+ 
   </body>
   </html>
