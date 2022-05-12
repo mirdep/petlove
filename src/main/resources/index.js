@@ -108,7 +108,7 @@ function createAnimalsList(animals){
  
     const botao = document.createElement("button")    
     botao.append(`Adotar Animal`)
-    botao.onclick = deleteAnimals(animal.id)
+    botao.onclick = function(){deleteAnimals(animal.id)}
     cartaoAnimal.append(botao)
 
 

@@ -19,29 +19,6 @@
       window.onload = codeAddress;
     </script>
 
-    <script>
-      const uploadImage = async (event) => {
-        const convertBase64 = (file) => {
-            return new Promise((resolve, reject) => {
-                const fileReader = new FileReader();
-                fileReader.readAsDataURL(file);
-
-                fileReader.onload = () => {
-                    resolve(fileReader.result);
-                };
-
-                fileReader.onerror = (error) => {
-                    reject(error);
-                };
-            });
-        };
-        const textArea = document.getElementById("foto");
-        const file = event.target.files[0];
-        const base64 = await convertBase64(file);
-        textArea.value = base64;
-      };
-    </script>
-
     <script> 
       window.onload = async()=> {
         console.log(); 
@@ -114,16 +91,6 @@
       <h2>Cadastrar animal</h2>
       <form action="http://localhost:6789/animal" method="post" id="form-add" target="_blank">
         <table>
-          <tr>
-            <br>
-            <label for="fotoupload">Escolha uma foto do animal!</label>
-            <br><br>
-            <input type="file" id="fotoupload" name="fotoupload" accept="image/*" onchange="uploadImage(event)">
-          </tr>
-          
-          <tr>
-            <td><input type="hidden" id="foto" name="foto"/></td>
-          </tr>
           
           <tr>
             <td align="right">Nome:</td>
